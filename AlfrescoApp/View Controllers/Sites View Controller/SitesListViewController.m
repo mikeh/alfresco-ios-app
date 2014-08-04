@@ -60,6 +60,7 @@ static CGFloat kSearchCellHeight = 60.0f;
     if (self)
     {
         [self createAlfrescoServicesWithSession:session];
+        self.defaultListingContext.sortProperty = @"cm:title";
     }
     return self;
 }
@@ -256,6 +257,8 @@ static CGFloat kSearchCellHeight = 60.0f;
     if (indexPath.row == lastSiteRowIndex)
     {
         AlfrescoListingContext *moreListingContext = [[AlfrescoListingContext alloc] initWithMaxItems:kMaxItemsPerListingRetrieve skipCount:[@(self.tableViewData.count) intValue]];
+        moreListingContext.sortProperty = @"cm:title";
+        
         if (self.moreItemsAvailable)
         {
             // show more items are loading ...
